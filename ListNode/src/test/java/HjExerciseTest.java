@@ -32,6 +32,8 @@ public class HjExerciseTest {
 
         // 清理标准输入
         System.setIn(System.in);
+
+        //新增
     }
 
 }
