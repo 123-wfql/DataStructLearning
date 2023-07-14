@@ -42,17 +42,17 @@ public class NcExercise {
 
         public boolean hasCycleViaHash(ListNode head) {
             ListNode pos = head;
-            // 哈希表记录访问过的结点
+            //哈希表记录访问过的结点
             Set<ListNode> visited = new HashSet<ListNode>();
             while (pos != null) {
-                // 判断结点是否被访问
+                //判断结点是否被访问
                 if (visited.contains(pos)) {
                     return true;
                 } else {
-                    // 结点记录添加到哈希表中
+                    //结点记录添加到哈希表中
                     visited.add(pos);
                 }
-                // 遍历
+                //遍历
                 pos = pos.next;
             }
             return false;
@@ -65,7 +65,7 @@ public class NcExercise {
          * 难度：简单
          */
         public int maxProfitViaBF (int[] prices) {
-            // 暴力算法：寻找数组中后项-前项的最大值
+            //暴力算法：寻找数组中后项-前项的最大值
             int length = prices.length;
             int max = 0;
             int i, j;
@@ -82,7 +82,7 @@ public class NcExercise {
         }
 
         public int maxProfitViaOnceTraversal (int[] prices) {
-            // 一次遍历法：在第i天卖出所得利润为当前股价-历史最低价
+            //一次遍历法：在第i天卖出所得利润为当前股价-历史最低价
             int minPrice = 10000;
             int maxProfit = 0;
             for (int price : prices) {
@@ -93,25 +93,25 @@ public class NcExercise {
         }
 
         public int maxProfitViaDP (int[] prices) {
-            // 动态规划解决
+            //动态规划解决
             int len = prices.length;
-            // 特殊判断
+            //特殊判断
             if (len < 2) {
                 return 0;
             }
             int[][] dp = new int[len][2];
 
-            // dp[i][0] 下标为 i 这天结束的时候，不持股，手上拥有的现金数
-            // dp[i][1] 下标为 i 这天结束的时候，持股，手上拥有的现金数
+            //dp[i][0] 下标为 i 这天结束的时候，不持股，手上拥有的现金数
+            //dp[i][1] 下标为 i 这天结束的时候，持股，手上拥有的现金数
 
-            // 初始化：不持股显然为 0，持股就需要减去第 1 天（下标为 0）的股价
+            //初始化：不持股显然为 0，持股就需要减去第 1 天（下标为 0）的股价
             dp[0][0] = 0;
             //dp[0][1] = -prices[0];
             dp[0][1] = prices[0];
 
-            // 从第 2 天开始遍历
-            // 其实本质上和一次遍历法计算的过程相同：不持股找最大其实是找最大的卖出利润，持股找最大是找历史买入的最低价格
-            // 所以下文中dp[i][1]可以计算极小值
+            //从第 2 天开始遍历
+            //其实本质上和一次遍历法计算的过程相同：不持股找最大其实是找最大的卖出利润，持股找最大是找历史买入的最低价格
+            //所以下文中dp[i][1]可以计算极小值
             for (int i = 1; i < len; i++) {
                 //使用状态转移法：
                 //dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
@@ -130,7 +130,7 @@ public class NcExercise {
          * 难度：简单
          */
         public int[] twoSumViaHashMap (int[] numbers, int target) {
-            // write code here
+            //write code here
             HashMap<Integer, Integer> map = new HashMap<>();
             //遍历数组
             for (int i = 0; i < numbers.length; i++) {
@@ -144,7 +144,7 @@ public class NcExercise {
         }
 
         public int[] twoSumViaBF (int[] numbers, int target) {
-            // write code here
+            //write code here
             int n = numbers.length;
             int[] res = {-1, -1};
             //遍历数组
